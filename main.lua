@@ -2,7 +2,6 @@ require "src.Dependencies"
 
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 600
-
 VIRTUAL_HEIGHT = 243
 VIRTUAL_WIDTH = 432
 
@@ -15,13 +14,6 @@ function love.load()
                      {fullscreen = false, resizable = true, vsync = true})
     love.keyboard.keysPressed = {}
     gStateMachine:change("start")
-end
-
-function love.resize(w, h) push:resize(w, h) end
-
-function love.update(dt)
-    gStateMachine:update(dt)
-    love.keyboard.keysPressed = {}
 end
 
 function love.draw()
@@ -49,4 +41,11 @@ function love.keyboard.wasPressed(key)
     else
         return false
     end
+end
+
+function love.resize(w, h) push:resize(w, h) end
+
+function love.update(dt)
+    gStateMachine:update(dt)
+    love.keyboard.keysPressed = {}
 end
