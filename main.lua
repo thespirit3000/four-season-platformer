@@ -1,8 +1,8 @@
 require "src.Dependencies"
 
-WINDOW_WIDTH = 800
-WINDOW_HEIGHT = 600
-VIRTUAL_HEIGHT = 243
+WINDOW_WIDTH = 1280
+WINDOW_HEIGHT = 720
+VIRTUAL_HEIGHT = 256
 VIRTUAL_WIDTH = 432
 
 function love.load()
@@ -11,7 +11,7 @@ function love.load()
     love.window.setTitle("Four seasons")
     love.graphics.setFont(gFonts["small"])
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT,
-                     {fullscreen = false, resizable = true, vsync = true})
+                     {fullscreen = true, resizable = true, vsync = true})
     love.keyboard.keysPressed = {}
     gStateMachine:change("start")
 end
