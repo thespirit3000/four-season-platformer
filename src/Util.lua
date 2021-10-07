@@ -28,3 +28,24 @@ function table.slice(tbl, first, last, step)
 end
 
 function GenerateSkyQuads(atlas, tileWidth, tileHeight) end
+
+function GenerateTiledBacground(tileSize, season)
+    local mapHeight = BACKGROUND_HEIGHT
+    local mapWidth = BACKGROUND_WIDTH
+    local tiles = {}
+    for y = 1, mapHeight do
+        table.insert(tiles, {})
+        for x = 1, mapWidth do
+            local id = 1
+            if y % 4 == 0 then
+                id = 2 * y - 4 + season
+            else
+                id = (math.ceil(y / 4) * 4) +
+                         (math.floor(y / 4) * 4 - (4 - season))
+            end
+            if y % 4 == 0 and y / 4 > 3 then id = 24 + season end
+            table.insert(tiles[y], {id = id})
+        end
+    end
+    return tiles
+end

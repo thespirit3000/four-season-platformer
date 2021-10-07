@@ -1,10 +1,5 @@
 require "src.Dependencies"
 
-WINDOW_WIDTH = 1280
-WINDOW_HEIGHT = 720
-VIRTUAL_HEIGHT = 256
-VIRTUAL_WIDTH = 432
-
 function love.load()
     love.graphics.setDefaultFilter("nearest", "nearest")
     math.randomseed(os.time())
@@ -19,6 +14,7 @@ end
 function love.draw()
     push:start()
     gStateMachine:render()
+
     displayFPS()
     push:finish()
 end
