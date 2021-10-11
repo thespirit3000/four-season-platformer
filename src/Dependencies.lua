@@ -1,6 +1,7 @@
 Class = require "lib.class"
 push = require "lib.push"
 sti = require 'lib.sti'
+anim8 = require 'lib.anim8'
 require "src.Util"
 
 require "src.StateMachine"
@@ -11,10 +12,12 @@ require "src.states.HightScoresState"
 require "src.states.ServeState"
 require "src.states.GameOverSate"
 
+require "src.Player"
+
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
-VIRTUAL_HEIGHT = 256
-VIRTUAL_WIDTH = 432
+VIRTUAL_HEIGHT = 512
+VIRTUAL_WIDTH = 864
 SkyTileSize = 16
 BACKGROUND_HEIGHT = VIRTUAL_HEIGHT / SkyTileSize
 BACKGROUND_WIDTH = 2 * VIRTUAL_WIDTH / SkyTileSize

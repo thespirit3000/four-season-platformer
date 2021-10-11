@@ -8,7 +8,7 @@ function love.load()
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT,
                      {fullscreen = true, resizable = true, vsync = true})
     love.keyboard.keysPressed = {}
-    gStateMachine:change("start")
+    gStateMachine:change("play")
 end
 
 function love.draw()
