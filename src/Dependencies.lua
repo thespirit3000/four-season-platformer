@@ -2,6 +2,8 @@ Class = require "lib.class"
 push = require "lib.push"
 sti = require 'lib.sti'
 anim8 = require 'lib.anim8'
+wf = require 'lib.windfield'
+
 require "src.Util"
 
 require "src.StateMachine"
@@ -34,15 +36,9 @@ gSounds = {
     ["music"] = love.audio.newSource("assets/sounds/music.wav", "static")
 }
 
-gTextures = {
-    ['sky'] = love.graphics.newImage('assets/graphics/Background/Sky.png'),
-    ['foreground'] = love.graphics.newImage(
-        'assets/graphics/Foreground/Foreground.png')
-}
+gTextures = {['player'] = love.graphics.newImage('assets/playerSheet.png')}
 
-gFrames = {
-    ['skies'] = GenerateQuads(gTextures['sky'], SkyTileSize, SkyTileSize)
-}
+gFrames = {}
 
 gFonts = {
     ["small"] = love.graphics.newFont("assets/fonts/font.ttf", 8),
@@ -51,3 +47,5 @@ gFonts = {
 }
 
 gMaps = {["testing"] = sti('maps/level0.lua')}
+
+gColisionClasses = {'Player', 'Platform', 'Enemy', 'Danger'}
