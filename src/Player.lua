@@ -15,7 +15,7 @@ function Player:init(world)
                                               self.height,
                                               {collision_class = 'Player'})
     self.colider:setFixedRotation(true)
-    self.playerGraphics = PlayerAnimation('Pink Man')
+    self.playerGraphics = PlayerAnimation('Ninja Frog')
     self.animations = self.playerGraphics.animation
     self.state = 'idle'
 end
@@ -41,7 +41,7 @@ function Player:update(dt)
     else
     end
     if love.keyboard.wasPressed('space') then
-        if self.grounded then self.colider:applyLinearImpulse(0, -800) end
+        if self.grounded then self.colider:applyLinearImpulse(0, -700) end
     end
     if self.grounded then
         if self.moving then

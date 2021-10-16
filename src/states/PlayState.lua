@@ -4,22 +4,12 @@ function PlayState:enter(params) end
 
 function PlayState:init()
     self.world = wf.newWorld(0, 1000, false)
-    self.map = sti('maps/level0.lua')
+    self:loadMap('maps/level0.lua')
     for k, colisionClass in pairs(gColisionClasses) do
         self.world:addCollisionClass(colisionClass)
     end
-    self.world:setQueryDebugDrawing(true)
     self.player = Player(self.world)
-    self.platform = self.world:newRectangleCollider(100, 400, 600, 10, {
-        collision_class = 'Platform'
-    })
-    self.dangerZone = self.world:newRectangleCollider(0, VIRTUAL_HEIGHT - 5,
-                                                      VIRTUAL_WIDTH, 5, {
-        collision_class = 'Danger'
-    })
-    self.platform:setType('static')
-    self.dangerZone:setType('static')
-
+    self.world:setQueryDebugDrawing(true)
 end
 
 function PlayState:update(dt)
@@ -29,23 +19,34 @@ function PlayState:update(dt)
 end
 
 function PlayState:render()
+    self.map:draw()
     self.world:draw()
     self.player:render()
 end
 
---[[ function PlayState:loadMap(map, world)
-    if map.layers['Platforms'] then
-        for i, obj in pairs(map.layers['Platforms'].objects) do
-            world:newRectangleCollider(obj.x, obj.y, obj.width, obj.height)
+function PlayState:loadMap(map)
+    self.map = sti(map)
+    if self.map.layers['Platforms'] then
+        for i, obj in pairs(self.map.layers['Platforms'].objects) do
+            self:spawnPlatform(obj.x, obj.y, obj.width, obj.height)
+        end
+    end
+    if self.map.layers['Enemies'] then
+        for i, obj in pairs(self.map.layers['Platforms'].objects) do
+            self:spawnPlatform(obj.x, obj.y, obj.width, obj.height)
+        end
+    end
+    if self.map.layers['Player'] then
+        for i, obj in pairs(self.map.layers['Platforms'].objects) do
+            self:spawnPlatform(obj.x, obj.y, obj.width, obj.height)
         end
     end
 
-end ]]
---[[ function beginContact(a, b, collision) PlayState:beginContact(a, b, collision) end
-
-function PlayState:beginContact(a, b, collision)
-    self.player:beginContact(a, b, collision)
 end
-function PlayState:endContact(a, b, collision)
-    self.player:endContact(a, b, collision)
-end ]]
+
+function PlayState:spawnPlatform(x, y, width, height)
+    local platform = self.world:newRectangleCollider(x, y, width, height, {
+        collision_class = "Platform"
+    })
+    platform:setType('static')
+end
