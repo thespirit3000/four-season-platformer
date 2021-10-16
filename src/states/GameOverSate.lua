@@ -9,10 +9,10 @@ function GameOverState:update(dt)
     end
 end
 function GameOverState:render()
-    RenderScore(self.score)
     love.graphics.setFont(gFonts["large"])
     love.graphics.printf("GAME OVER", 0, 64, VIRTUAL_WIDTH, "center")
     love.graphics.setFont(gFonts["medium"])
     love.graphics.setColor(103 / 255, 1, 1, 1)
-    love.graphics.printf("press ENTER to START new game", 0, VIRTUAL_HEIGHT - 32, VIRTUAL_WIDTH, "center")
+    love.graphics.printf("press ENTER to START new game", 0,
+                         VIRTUAL_HEIGHT - 32, VIRTUAL_WIDTH, "center")
 end
