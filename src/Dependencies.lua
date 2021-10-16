@@ -15,6 +15,7 @@ require "src.states.ServeState"
 require "src.states.GameOverSate"
 
 require "src.Player"
+require 'src.PlayerAnimation'
 
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
