@@ -20,8 +20,11 @@ function PlayerAnimation:init(playerName)
         ['run'] = love.graphics.newImage(
             'assets/graphics/MainCharacters/' .. playerName .. '/Run.png'),
         ['wallJump'] = love.graphics.newImage(
-            'assets/graphics/MainCharacters/' .. playerName .. '/Wall Jump.png')
-
+            'assets/graphics/MainCharacters/' .. playerName .. '/Wall Jump.png'),
+        ['spawn'] = love.graphics.newImage(
+            '/assets/graphics/MainCharacters/Appearing.png'),
+        ['disapear'] = love.graphics.newImage(
+            '/assets/graphics/MainCharacters/Appearing.png')
     }
     self.grids = {}
     self.grids.idle = anim8.newGrid(frameSize, frameSize,
@@ -38,6 +41,8 @@ function PlayerAnimation:init(playerName)
                                    self.textures['run']:getDimensions())
     self.grids.wallJump = anim8.newGrid(frameSize, frameSize,
                                         self.textures['wallJump']:getDimensions())
+    self.grids.apearing = anim8.newGrid(96, 96,
+                                        self.textures['spawn']:getDimensions())
     self.animation = {
         ['idle'] = anim8.newAnimation(self.grids.idle('1-11', 1), animationSpeed),
         ['doubleJump'] = anim8.newAnimation(self.grids.doubleJump('1-6', 1),
@@ -48,12 +53,19 @@ function PlayerAnimation:init(playerName)
         ['run'] = anim8.newAnimation(self.grids.run('1-11', 1), animationSpeed),
 
         ['wallJump'] = anim8.newAnimation(self.grids.wallJump('1-5', 1),
-                                          animationSpeed)
+                                          animationSpeed),
+        ['spawn'] = anim8.newAnimation(self.grids.apearing('1-7', 1), 0.1,
+                                       'pauseAtEnd')
     }
 end
 
 function PlayerAnimation:update(dt, type) self.animation[type]:update(dt) end
 function PlayerAnimation:render(type, x, y, direction)
-    self.animation[type]:draw(self.textures[type], x, y, nil, direction, 1,
-                              frameSize / 2, frameSize / 2 + 2)
+    if type == 'spawn' then
+        self.animation[type]:draw(self.textures[type], x, y, nil, direction, 1,
+                                  96 / 2, 96 / 2 + 2)
+    else
+        self.animation[type]:draw(self.textures[type], x, y, nil, direction, 1,
+                                  frameSize / 2, frameSize / 2 + 2)
+    end
 end
