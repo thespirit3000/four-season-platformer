@@ -3,9 +3,11 @@ push = require "lib.push"
 sti = require 'lib.sti'
 anim8 = require 'lib.anim8'
 wf = require 'lib.windfield'
+camera = require 'lib.hump.camera'
 
 require "src.Util"
 
+require "src.StateStack"
 require "src.StateMachine"
 require "src.states.BaseState"
 require "src.states.PlayState"
@@ -16,6 +18,7 @@ require "src.states.GameOverSate"
 
 require "src.Player"
 require 'src.PlayerAnimation'
+require 'src.Fruit'
 
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
@@ -37,7 +40,9 @@ gSounds = {
     ["music"] = love.audio.newSource("assets/sounds/music.wav", "static")
 }
 
-gTextures = {['player'] = love.graphics.newImage('assets/playerSheet.png')}
+gTextures = {
+    ['apple'] = love.graphics.newImage('assets/graphics/Items/Fruits/Apple.png')
+}
 
 gFrames = {}
 
@@ -49,4 +54,3 @@ gFonts = {
 
 gMaps = {["testing"] = sti('maps/level0.lua')}
 
-gColisionClasses = {'Player', 'Platform', 'Enemy', 'Danger'}
