@@ -4,21 +4,21 @@ function love.load()
     love.graphics.setDefaultFilter("nearest", "nearest")
     math.randomseed(os.time())
     love.window.setTitle("Four seasons")
-    love.graphics.setFont(gFonts["small"])
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT,
                      {fullscreen = true, resizable = true, vsync = true})
     love.keyboard.keysPressed = {}
-    gStateMachine:change("play")
+    gStateStack = StateStack()
+    gStateStack:push(PlayState())
 end
 
 function love.update(dt)
-    gStateMachine:update(dt)
+    gStateStack:update(dt)
     love.keyboard.keysPressed = {}
 end
 
 function love.draw()
     push:start()
-    gStateMachine:render()
+    gStateStack:render()
     displayFPS()
     push:finish()
 end
