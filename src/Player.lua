@@ -77,9 +77,6 @@ function Player:update(dt)
     end
     if self.collider:enter('Danger') then self:destroy() end
 end
-function Player:spawn() end
-function Player:destroy() self.collider:setPosition(360, 100) end
-
 function Player:render()
     local px, py = self.collider:getPosition()
     self.playerGraphics:render(self.state, px, py, self.direction)
