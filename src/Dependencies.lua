@@ -22,6 +22,8 @@ require 'src.EnemyBase'
 require 'src.PlayerAnimation'
 require 'src.Fruit'
 
+require 'src.Enemies.MushroomEnemy'
+
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
 VIRTUAL_HEIGHT = 512

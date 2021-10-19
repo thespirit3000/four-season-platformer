@@ -9,6 +9,7 @@ function PlayState:init()
     self:loadMap('maps/level0.lua')
     self.player = Player(self.world, self.playerX, self.playerY)
     self.world:setQueryDebugDrawing(true)
+    self.enemy = MushroomEnemy(self.world, 100, 100)
 end
 
 function PlayState:update(dt)
@@ -23,14 +24,16 @@ end
 
 function PlayState:render()
     self.map:draw()
-    --[[     self.world:draw(200) ]]
+    self.world:draw(200)
     for i, value in ipairs(self.items) do value:render() end
     self.player:render()
+    self.enemy:render()
 end
 
 function PlayState:loadMap(map)
     self.world:addCollisionClass('Items')
     self.world:addCollisionClass('Player')
+    self.world:addCollisionClass('Enemy', {ignores = {'Items'}})
     self.map = sti(map)
     if self.map.layers['Platforms'] then
         for i, obj in pairs(self.map.layers['Platforms'].objects) do
