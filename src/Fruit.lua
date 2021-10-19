@@ -1,12 +1,12 @@
 Fruit = Class {}
-local animationDuration = 0.5
+local animationDuration = 0.3
 
 function Fruit:init(world, x, y, type)
     self.world = world
     self.x = x
     self.y = y
     self.size = 32
-    self.texture = gTextures['apple']
+    self.texture = gTextures[type]
     self.collider = self.world:newCircleCollider(self.x + self.size / 2,
                                                  self.y + self.size / 2,
                                                  self.size / 2)
@@ -29,10 +29,12 @@ function Fruit:update(dt) self.currentAnimation:update(dt) end
 function Fruit:render() self.currentAnimation:draw(self.texture, self.x, self.y) end
 
 function Fruit:kill()
-    self.currentAnimation = self.animationCollected
-    self.texture = gTextures['collected']
-    Timer.after(animationDuration, function()
-        self.collider:destroy()
-        self.killed = true
-    end)
+    if not self.killed then
+        self.currentAnimation = self.animationCollected
+        self.texture = gTextures['collected']
+        Timer.after(animationDuration, function()
+            self.collider:destroy()
+            self.killed = true
+        end)
+    end
 end

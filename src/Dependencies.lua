@@ -43,6 +43,18 @@ gSounds = {
 
 gTextures = {
     ['apple'] = love.graphics.newImage('assets/graphics/Items/Fruits/Apple.png'),
+    ['bananas'] = love.graphics.newImage(
+        'assets/graphics/Items/Fruits/Bananas.png'),
+    ['cherries'] = love.graphics.newImage(
+        'assets/graphics/Items/Fruits/Cherries.png'),
+    ['kiwi'] = love.graphics.newImage('assets/graphics/Items/Fruits/Kiwi.png'),
+    ['melon'] = love.graphics.newImage('assets/graphics/Items/Fruits/Melon.png'),
+    ['orange'] = love.graphics.newImage(
+        'assets/graphics/Items/Fruits/Orange.png'),
+    ['pineapple'] = love.graphics.newImage(
+        'assets/graphics/Items/Fruits/Pineapple.png'),
+    ['strawberry'] = love.graphics.newImage(
+        'assets/graphics/Items/Fruits/Strawberry.png'),
     ['collected'] = love.graphics.newImage(
         'assets/graphics/Items/Fruits/Collected.png')
 }

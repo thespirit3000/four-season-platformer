@@ -23,7 +23,7 @@ end
 
 function PlayState:render()
     self.map:draw()
-    self.world:draw(20)
+    --[[     self.world:draw(200) ]]
     for i, value in ipairs(self.items) do value:render() end
     self.player:render()
 end
@@ -44,7 +44,7 @@ function PlayState:loadMap(map)
     end
     if self.map.layers['Items'] then
         for i, obj in pairs(self.map.layers['Items'].objects) do
-            local item = Fruit(self.world, obj.x, obj.y, obj.itemType)
+            local item = Fruit(self.world, obj.x, obj.y, obj.properties['type'])
             table.insert(self.items, item)
         end
     end
