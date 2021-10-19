@@ -18,6 +18,7 @@ require "src.states.ServeState"
 require "src.states.GameOverSate"
 
 require "src.Player"
+require 'src.EnemyBase'
 require 'src.PlayerAnimation'
 require 'src.Fruit'
 
