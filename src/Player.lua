@@ -17,6 +17,10 @@ function Player:init(world, x, y)
     self.collider:setFixedRotation(true)
     self.collider:setObject(self)
     self.playerGraphics = PlayerAnimation('Ninja Frog')
+    self.collider:setPreSolve(function(a, b, contact)
+        if a.collision_class == "Player" and b.collision_class == 'Items' then end
+        contact:setEnabled(false)
+    end)
 end
 
 function Player:update(dt)
@@ -67,9 +71,9 @@ function Player:update(dt)
     end
     self.playerGraphics:update(dt, self.state)
     if self.collider:enter('Items') then
-        local collision_data = self.collider:getCollisionData('Items')
+        local collision_data = self.collider:getEnterCollisionData('Items')
         local fruit = collision_data.collider:getObject()
-        fruit:destroy()
+        fruit:kill()
     end
     if self.collider:enter('Danger') then self:destroy() end
 end

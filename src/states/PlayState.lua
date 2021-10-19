@@ -6,29 +6,31 @@ function PlayState:init()
     self.platforms = {}
     self.items = {}
     self.world = wf.newWorld(0, 1000, false)
-    self.world:addCollisionClass('Items')
-    self.world:addCollisionClass('Player', {ignores = {'Items'}})
-    self.world:setCallbacks(beginContact, endContact, preSolve, postSolve)
     self:loadMap('maps/level0.lua')
     self.player = Player(self.world, self.playerX, self.playerY)
     self.world:setQueryDebugDrawing(true)
 end
 
 function PlayState:update(dt)
-    self.world:update(dt)
     self.map:update(dt)
+    self.world:update(dt)
     self.player:update(dt)
+    for index, value in ipairs(self.items) do
+        if value.killed then table.remove(self.items, index) end
+    end
     for i, value in ipairs(self.items) do value:update(dt) end
 end
 
 function PlayState:render()
     self.map:draw()
     self.world:draw(20)
-    self.player:render()
     for i, value in ipairs(self.items) do value:render() end
+    self.player:render()
 end
 
 function PlayState:loadMap(map)
+    self.world:addCollisionClass('Items')
+    self.world:addCollisionClass('Player')
     self.map = sti(map)
     if self.map.layers['Platforms'] then
         for i, obj in pairs(self.map.layers['Platforms'].objects) do
