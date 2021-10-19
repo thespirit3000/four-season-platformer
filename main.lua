@@ -12,6 +12,7 @@ function love.load()
 end
 
 function love.update(dt)
+    Timer.update(dt)
     gStateStack:update(dt)
     love.keyboard.keysPressed = {}
 end

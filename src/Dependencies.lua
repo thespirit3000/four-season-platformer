@@ -4,6 +4,7 @@ sti = require 'lib.sti'
 anim8 = require 'lib.anim8'
 wf = require 'lib.windfield'
 camera = require 'lib.hump.camera'
+Timer = require 'lib.knife.timer'
 
 require "src.Util"
 
@@ -41,7 +42,9 @@ gSounds = {
 }
 
 gTextures = {
-    ['apple'] = love.graphics.newImage('assets/graphics/Items/Fruits/Apple.png')
+    ['apple'] = love.graphics.newImage('assets/graphics/Items/Fruits/Apple.png'),
+    ['collected'] = love.graphics.newImage(
+        'assets/graphics/Items/Fruits/Collected.png')
 }
 
 gFrames = {}
