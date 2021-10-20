@@ -16,6 +16,7 @@ function PlayState:update(dt)
     self.map:update(dt)
     self.world:update(dt)
     self.player:update(dt)
+    self.enemy:update(dt)
     for index, value in ipairs(self.items) do
         if value.killed then table.remove(self.items, index) end
     end
@@ -24,7 +25,7 @@ end
 
 function PlayState:render()
     self.map:draw()
-    self.world:draw(200)
+    --[[     self.world:draw(200) ]]
     for i, value in ipairs(self.items) do value:render() end
     self.player:render()
     self.enemy:render()

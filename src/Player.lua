@@ -75,6 +75,9 @@ function Player:update(dt)
         local fruit = collision_data.collider:getObject()
         fruit:kill()
     end
+    if self.collider:enter('Enemy') then
+        self.collider:applyLinearImpulse(-300 * self.direction, 0)
+    end
     if self.collider:enter('Danger') then self:destroy() end
 end
 function Player:render()
