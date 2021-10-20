@@ -25,8 +25,15 @@ function MushroomEnemy:update(dt)
                                                            py, 10, 10, {
         'Platform', 'Bound'
     })
-    if #bounds == 0 then self.direction = -1 * self.direction end
-    if #forwardColliders > 0 then self.direction = -1 * self.direction end
+    if #bounds == 0 or #forwardColliders > 0 then
+        self.state = 'idle'
+        self.speed = 0
+        self.direction = -1 * self.direction
+        Timer.after(2, function()
+            self.state = 'run'
+            self.speed = 80
+        end)
+    end
 
     if self.grounded then
         self.collider:setX(px + self.speed * self.direction * dt)

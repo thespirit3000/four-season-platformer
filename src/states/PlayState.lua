@@ -25,7 +25,7 @@ end
 
 function PlayState:render()
     self.map:draw()
-    --[[     self.world:draw(200) ]]
+    self.world:draw(200)
     for i, value in ipairs(self.items) do value:render() end
     self.player:render()
     self.enemy:render()
