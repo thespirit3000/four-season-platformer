@@ -73,3 +73,4 @@ gFonts = {
 
 gMaps = {["testing"] = sti('maps/level0.lua')}
 
+gEnemy = {['mushroom'] = MushroomEnemy}

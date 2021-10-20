@@ -5,30 +5,30 @@ function PlayState:enter(params) end
 function PlayState:init()
     self.platforms = {}
     self.items = {}
+    self.enemies = {}
     self.world = wf.newWorld(0, 1000, false)
     self:loadMap('maps/level0.lua')
     self.player = Player(self.world, self.playerX, self.playerY)
     self.world:setQueryDebugDrawing(true)
-    self.enemy = MushroomEnemy(self.world, 100, 100)
 end
 
 function PlayState:update(dt)
     self.map:update(dt)
     self.world:update(dt)
     self.player:update(dt)
-    self.enemy:update(dt)
     for index, value in ipairs(self.items) do
         if value.killed then table.remove(self.items, index) end
     end
     for i, value in ipairs(self.items) do value:update(dt) end
+    for i, value in ipairs(self.enemies) do value:update(dt) end
 end
 
 function PlayState:render()
     self.map:draw()
-    self.world:draw(200)
+    --[[     self.world:draw(200) ]]
     for i, value in ipairs(self.items) do value:render() end
+    for i, value in ipairs(self.enemies) do value:render() end
     self.player:render()
-    self.enemy:render()
 end
 
 function PlayState:loadMap(map)
@@ -54,8 +54,11 @@ function PlayState:loadMap(map)
     end
 
     if self.map.layers['Enemies'] then
-        for i, obj in pairs(self.map.layers['Platforms'].objects) do
-            self:spawnPlatform(obj.x, obj.y, obj.width, obj.height)
+        for i, obj in pairs(self.map.layers['Enemies'].objects) do
+            print(obj.properties['type'])
+            local item =
+                gEnemy[obj.properties['type']](self.world, obj.x, obj.y)
+            table.insert(self.enemies, item)
         end
     end
     if self.map.layers['Player'] then

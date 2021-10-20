@@ -8,9 +8,9 @@ function EnemyBase:init(world, x, y)
     self.speed = 80
     self.grounded = true
     self.direction = 1
-    self.collider = world:newRectangleCollider(self.x, self.y, self.width,
-                                               self.height,
-                                               {collision_class = 'Enemy'})
+    self.collider = self.world:newRectangleCollider(self.x, self.y, self.width,
+                                                    self.height,
+                                                    {collision_class = 'Enemy'})
 
     self.collider:setFixedRotation(true)
     self.collider:setObject(self)
