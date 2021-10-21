@@ -25,6 +25,9 @@ require 'src.Fruit'
 require("src.Enemies.enemyTextures")
 require 'src.Enemies.MushroomEnemy'
 require 'src.Enemies.MushroomAnimations'
+require("src.Enemies.AngryPigEnemy")
+require("src.Enemies.AngryPigAnimation")
+
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
 VIRTUAL_HEIGHT = 512
@@ -73,4 +76,4 @@ gFonts = {
 
 gMaps = {["testing"] = sti('maps/level0.lua')}
 
-gEnemy = {['mushroom'] = MushroomEnemy}
+gEnemy = {['mushroom'] = MushroomEnemy, ['angry-pig'] = AngryPigEnemy}

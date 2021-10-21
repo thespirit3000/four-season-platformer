@@ -1,11 +1,13 @@
-MushroomEnemy = Class {__includes = EnemyBase}
+AngryPigEnemy = Class {__includes = EnemyBase}
 
-function MushroomEnemy:init(world, x, y)
+function AngryPigEnemy:init(world, x, y)
     EnemyBase.init(self, world, x, y)
-    self.animation = MushroomAnimations()
-    self.state = 'run'
+    self.animation = AngryPigAnimation()
+    self.state = 'walk'
+    self.direction = 1
 end
-function MushroomEnemy:update(dt)
+function AngryPigEnemy:update(dt)
+
     local px, py = self.collider:getPosition()
     local bottomColliders = self.world:queryRectangleArea(px, py + 16, 10, 10,
                                                           {'Platform', 'Bound'})
@@ -29,7 +31,7 @@ function MushroomEnemy:update(dt)
         self.speed = 0
         self.direction = -1 * self.direction
         Timer.after(2, function()
-            self.state = 'run'
+            self.state = 'walk'
             self.speed = 80
         end)
     end
@@ -39,7 +41,8 @@ function MushroomEnemy:update(dt)
     end
     self.animation:update(dt, self.state)
 end
-function MushroomEnemy:render(dt)
+
+function AngryPigEnemy:render(dt)
     local px, py = self.collider:getPosition()
     self.animation:render(self.state, px, py, self.direction * -1)
 end
