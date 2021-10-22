@@ -7,19 +7,19 @@ function love.load()
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT,
                      {fullscreen = true, resizable = true, vsync = true})
     love.keyboard.keysPressed = {}
-    gStateStack = StateStack()
-    gStateStack:push(PlayState())
+    gStateMachine:change('play', {map = '0'})
 end
 
 function love.update(dt)
+
     Timer.update(dt)
-    gStateStack:update(dt)
+    gStateMachine:update(dt)
     love.keyboard.keysPressed = {}
 end
 
 function love.draw()
     push:start()
-    gStateStack:render()
+    gStateMachine:render()
     displayFPS()
     push:finish()
 end
@@ -33,6 +33,8 @@ end
 function love.keypressed(key)
     love.keyboard.keysPressed[key] = true
 
+    if key == 'f1' then gStateMachine:change('play', {map = '0'}) end
+    if key == 'f2' then gStateMachine:change('play', {map = '1'}) end
     if key == "escape" then love.event.quit() end
 end
 
