@@ -20,7 +20,10 @@ function PlayState:update(dt)
         if value.killed then table.remove(self.items, index) end
     end
     for index, value in ipairs(self.enemies) do
-        if value.killed then table.remove(self.enemies, index) end
+        if value.killed then
+            value.collider:destroy()
+            table.remove(self.enemies, index)
+        end
     end
     for i, value in ipairs(self.items) do value:update(dt) end
     for i, value in ipairs(self.enemies) do value:update(dt) end

@@ -1,6 +1,7 @@
 local frameSizeHeight = 30
 local frameSizeWidth = 36
 local animationSpeed = 0.06
+local animationDuration = 0.3
 AngryPigAnimation = Class {}
 
 function AngryPigAnimation:init()
@@ -18,7 +19,8 @@ function AngryPigAnimation:init()
         ['run'] = anim8.newAnimation(self.grids.run('1-12', 1), animationSpeed),
         ['walk'] = anim8.newAnimation(self.grids.walk('1-16', 1), animationSpeed),
         ['idle'] = anim8.newAnimation(self.grids.idle('1-9', 1), animationSpeed),
-        ['hit'] = anim8.newAnimation(self.grids.hit('1-5', 1), animationSpeed)
+        ['hit'] = anim8.newAnimation(self.grids.hit('1-5', 1),
+                                     animationDuration / 5)
     }
 end
 

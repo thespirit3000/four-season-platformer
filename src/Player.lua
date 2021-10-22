@@ -36,9 +36,7 @@ function Player:update(dt)
 
     local colliders = self.world:queryRectangleArea(px - 16, py + 16, 32, 2,
                                                     {'Platform', 'Bound'})
-    local collidersEnemy = self.world:queryRectangleArea(px - 8, py + 24, 16, 2,
-                                                         {'Enemy'})
-    if #collidersEnemy > 0 then self.collider:applyLinearImpulse(0, -100) end
+
     if #colliders > 0 then
         self.grounded = true
     else
@@ -55,7 +53,7 @@ function Player:update(dt)
     else
     end
     if love.keyboard.wasPressed('space') then
-        if self.grounded then self.collider:applyLinearImpulse(0, -700) end
+        if self.grounded then self.collider:applyLinearImpulse(0, -1000) end
     end
     if self.grounded then
         if self.moving then
@@ -87,3 +85,5 @@ function Player:render()
     local px, py = self.collider:getPosition()
     self.playerGraphics:render(self.state, px, py, self.direction)
 end
+
+function Player:jump() self.collider:applyLinearImpulse(0, -700) end
