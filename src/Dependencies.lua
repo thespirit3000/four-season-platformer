@@ -23,6 +23,7 @@ require 'src.PlayerAnimation'
 require 'src.Fruit'
 
 require("src.Enemies.enemyTextures")
+require("src.Enemies.Bullet")
 require 'src.Enemies.MushroomEnemy'
 require 'src.Enemies.MushroomAnimations'
 require("src.Enemies.AngryPigEnemy")
