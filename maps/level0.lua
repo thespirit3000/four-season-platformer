@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 76,
+  nextobjectid = 78,
   properties = {},
   tilesets = {
     {
@@ -306,6 +306,21 @@ return {
           visible = true,
           properties = {
             ["type"] = "angry-pig"
+          }
+        },
+        {
+          id = 77,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 113.333,
+          y = 256.667,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["type"] = "bee"
           }
         }
       }
