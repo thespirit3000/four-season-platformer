@@ -16,6 +16,7 @@ function BeeEnemy:init(world, x, y)
         end
     end)
 end
+
 function BeeEnemy:update(dt)
     local px, py = self.collider:getPosition()
     local playerQ = self.world:queryRectangleArea(px - self.width, py,
