@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="54" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="17">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="54" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="19">
  <editorsettings>
   <export target="../maps/level1.lua" format="lua"/>
  </editorsettings>
@@ -92,6 +92,8 @@
   <object id="14" x="47.4163" y="480.939" width="399.654" height="11.8541"/>
   <object id="15" x="16.9345" y="417.435" width="31.3288" height="77.0519"/>
   <object id="16" x="17.7812" y="401.347" width="12.7009" height="88.906"/>
+  <object id="17" x="287.886" y="417.435" width="47.417" height="11.8541"/>
+  <object id="18" x="607.101" y="416.588" width="47.417" height="11.8541"/>
  </objectgroup>
  <objectgroup id="2" name="Bounds" visible="0">
   <object id="1" x="0.846724" y="11.8541" width="45.7231" height="131.242"/>
