@@ -12,8 +12,9 @@ function Player:init(world, x, y)
     self.hitting = false
     self.apearing = true
     self.direction = 1
-    self.collider = world:newCircleCollider(self.x, self.y, self.width / 2,
-                                            {collision_class = 'Player'})
+    self.collider = world:newRectangleCollider(self.x, self.y, self.width,
+                                               self.width,
+                                               {collision_class = 'Player'})
     self.collider:setFixedRotation(true)
     self.collider:setObject(self)
     self.playerGraphics = PlayerAnimation('Ninja Frog')
@@ -32,8 +33,10 @@ function Player:update(dt)
     end
     local px, py = self.collider:getPosition()
     self.moving = false
+
     local colliders = self.world:queryRectangleArea(px - 16, py + 16, 32, 2,
                                                     {'Platform', 'Bound'})
+
     if #colliders > 0 then
         self.grounded = true
     else
@@ -50,7 +53,7 @@ function Player:update(dt)
     else
     end
     if love.keyboard.wasPressed('space') then
-        if self.grounded then self.collider:applyLinearImpulse(0, -700) end
+        if self.grounded then self.collider:applyLinearImpulse(0, -1000) end
     end
     if self.grounded then
         if self.moving then
@@ -75,12 +78,12 @@ function Player:update(dt)
         local fruit = collision_data.collider:getObject()
         fruit:kill()
     end
-    if self.collider:enter('Enemy') then
-        self.collider:applyLinearImpulse(-300 * self.direction, 0)
-    end
+
     if self.collider:enter('Danger') then self:destroy() end
 end
 function Player:render()
     local px, py = self.collider:getPosition()
     self.playerGraphics:render(self.state, px, py, self.direction)
 end
+
+function Player:jump() self.collider:applyLinearImpulse(0, -700) end

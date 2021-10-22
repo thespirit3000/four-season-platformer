@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 9,
-  nextobjectid = 75,
+  nextobjectid = 76,
   properties = {},
   tilesets = {
     {
@@ -249,21 +249,6 @@ return {
           }
         },
         {
-          id = 71,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 579.333,
-          y = 381.333,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["type"] = "mushroom"
-          }
-        },
-        {
           id = 72,
           name = "",
           type = "",
@@ -306,6 +291,21 @@ return {
           visible = true,
           properties = {
             ["type"] = "mushroom"
+          }
+        },
+        {
+          id = 75,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 521.333,
+          y = 383.333,
+          width = 32,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["type"] = "angry-pig"
           }
         }
       }

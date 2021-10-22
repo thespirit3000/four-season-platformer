@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="54" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="75">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="54" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="76">
  <editorsettings>
   <export target="../maps/level0.lua" format="lua"/>
  </editorsettings>
@@ -93,11 +93,6 @@
     <property name="type" value="mushroom"/>
    </properties>
   </object>
-  <object id="71" x="579.333" y="381.333" width="32" height="32">
-   <properties>
-    <property name="type" value="mushroom"/>
-   </properties>
-  </object>
   <object id="72" x="741.333" y="303.333" width="32" height="32">
    <properties>
     <property name="type" value="mushroom"/>
@@ -111,6 +106,11 @@
   <object id="74" x="569.333" y="222.667" width="32" height="32">
    <properties>
     <property name="type" value="mushroom"/>
+   </properties>
+  </object>
+  <object id="75" x="521.333" y="383.333" width="32" height="32">
+   <properties>
+    <property name="type" value="angry-pig"/>
    </properties>
   </object>
  </objectgroup>

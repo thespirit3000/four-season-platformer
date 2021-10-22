@@ -9,7 +9,6 @@ function MushroomEnemy:update(dt)
     local px, py = self.collider:getPosition()
     local bottomColliders = self.world:queryRectangleArea(px, py + 16, 10, 10,
                                                           {'Platform', 'Bound'})
-
     if #bottomColliders > 0 then
         self.grounded = true
     else
