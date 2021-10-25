@@ -25,6 +25,16 @@ EnemyTextures = {
         ['bullet'] = love.graphics.newImage(enemyPath .. 'Bee/Bullet.png'),
         ['bullet-pieces'] = love.graphics.newImage(enemyPath ..
                                                        'Bee/Bullet Pieces.png')
+    },
+    ['chameleon'] = {
+        ['hit'] = love.graphics.newImage(enemyPath ..
+                                             'Chameleon/Hit (84x38).png'),
+        ['idle'] = love.graphics.newImage(enemyPath ..
+                                              'Chameleon/Idle (84x38).png'),
+        ['run'] = love.graphics.newImage(enemyPath ..
+                                             'Chameleon/Run (84x38).png'),
+        ['attack'] = love.graphics.newImage(enemyPath ..
+                                                'Chameleon/Attack (84x38).png')
     }
 }
 

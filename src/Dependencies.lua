@@ -30,6 +30,8 @@ require("src.Enemies.AngryPigEnemy")
 require("src.Enemies.AngryPigAnimation")
 require("src.Enemies.BeeEnemy")
 require("src.Enemies.BeeAnimation")
+require("src.Enemies.ChameleonEnemy")
+require("src.Enemies.ChameleonAnimation")
 
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
