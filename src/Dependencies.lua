@@ -5,6 +5,7 @@ anim8 = require 'lib.anim8'
 wf = require 'lib.windfield'
 camera = require 'lib.hump.camera'
 Timer = require 'lib.knife.timer'
+Helium = require("lib.helium")
 
 require "src.Util"
 
@@ -16,6 +17,7 @@ require "src.states.StartState"
 require "src.states.HightScoresState"
 require "src.states.ServeState"
 require "src.states.GameOverSate"
+require("src.states.MainMenuState")
 
 require "src.Player"
 require 'src.EnemyBase'
@@ -43,6 +45,7 @@ BACKGROUND_WIDTH = 2 * VIRTUAL_WIDTH / SkyTileSize
 
 gStateMachine = StateMachine {
     ["start"] = function() return StartState() end,
+    ["main-menu"] = function() return MainMenuState() end,
     ["play"] = function() return PlayState() end,
     ["hight-scores"] = function() return HightScoresState() end,
     ["serve"] = function() return ServeState() end,
