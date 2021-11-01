@@ -19,7 +19,13 @@ function Player:init(world, x, y)
     self.collider:setObject(self)
     self.playerGraphics = PlayerAnimation('Ninja Frog')
     self.collider:setPreSolve(function(a, b, contact)
+        local px, py = self.collider:getPosition()
+        if a.collision_class == "Player" and b.collision_class == 'Platform' then
+            local platformX, platformY = b:getPosition()
+            if py < platformY then contact:setEnabled(false) end
+        end
         if a.collision_class == "Player" and b.collision_class == 'Items' then end
+
         contact:setEnabled(false)
     end)
 end
