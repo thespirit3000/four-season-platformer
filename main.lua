@@ -1,16 +1,4 @@
 require "src.Dependencies"
-local scene = Helium.scene.new(true)
-scene:activate()
-
-local elementCreator = Helium(function(param, view)
-
-    return function()
-        love.graphics.setColor(0.3, 0.3, 0.3)
-        love.graphics.rectangle('fill', 0, 0, view.w, view.h)
-        love.graphics.setColor(1, 1, 1)
-        love.graphics.print('hello world')
-    end
-end)
 
 function love.load()
     love.graphics.setDefaultFilter("nearest", "nearest")
@@ -19,22 +7,20 @@ function love.load()
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT,
                      {fullscreen = true, resizable = true, vsync = true})
     love.keyboard.keysPressed = {}
+    gStateStack = StateStack()
+    gStateStack:push(StartState())
     gStateMachine:change('main-menu', {map = '0'})
 end
 
 function love.update(dt)
-    scene:update(dt)
-
     Timer.update(dt)
-    gStateMachine:update(dt)
+    gStateStack:update(dt)
     love.keyboard.keysPressed = {}
 end
 
 function love.draw()
     push:start()
-    gStateMachine:render()
-
-    scene:draw()
+    gStateStack:render()
     displayFPS()
     push:finish()
 end

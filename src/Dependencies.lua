@@ -6,6 +6,7 @@ wf = require 'lib.windfield'
 camera = require 'lib.hump.camera'
 Timer = require 'lib.knife.timer'
 Helium = require("lib.helium")
+Flux = require("lib.flux")
 
 require "src.Util"
 
@@ -34,6 +35,8 @@ require("src.Enemies.BeeEnemy")
 require("src.Enemies.BeeAnimation")
 require("src.Enemies.ChameleonEnemy")
 require("src.Enemies.ChameleonAnimation")
+
+require("src.UI.menuBtn")
 
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
@@ -79,7 +82,11 @@ gFrames = {}
 gFonts = {
     ["small"] = love.graphics.newFont("assets/fonts/font.ttf", 8),
     ["medium"] = love.graphics.newFont("assets/fonts/font.ttf", 16),
-    ["large"] = love.graphics.newFont("assets/fonts/font.ttf", 32)
+    ["large"] = love.graphics.newFont("assets/fonts/font.ttf", 32),
+    ['main-menu-font'] = love.graphics.newFont('assets/fonts/Roboto-Bold.ttf',
+                                               32),
+    ['main-menu-button-font'] = love.graphics.newFont(
+        'assets/fonts/Roboto-Bold.ttf', 16)
 }
 
 gMaps = {["testing"] = sti('maps/level0.lua')}
