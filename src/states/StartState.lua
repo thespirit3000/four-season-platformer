@@ -16,7 +16,7 @@ function StartState:update(dt)
                            BACKGROUND_LOOPING_POINT
     if love.keyboard.wasPressed("enter") or love.keyboard.wasPressed("return") then
         gStateStack:pop()
-        gStateStack:push(PlayState())
+        gStateStack:push(PlayState({map = 0}))
     end
 end
 
