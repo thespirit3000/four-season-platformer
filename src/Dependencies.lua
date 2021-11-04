@@ -77,6 +77,16 @@ gTextures = {
         'assets/graphics/Items/Fruits/Collected.png')
 }
 
+gBackgroundTextures = {
+    ['blue'] = love.graphics.newImage('assets/graphics/Background/Blue.png'),
+    ['brown'] = love.graphics.newImage('assets/graphics/Background/Brown.png'),
+    ['gray'] = love.graphics.newImage('assets/graphics/Background/Gray.png'),
+    ['green'] = love.graphics.newImage('assets/graphics/Background/Green.png'),
+    ['pink'] = love.graphics.newImage('assets/graphics/Background/Pink.png'),
+    ['purple'] = love.graphics.newImage('assets/graphics/Background/Purple.png'),
+    ['yellow'] = love.graphics.newImage('assets/graphics/Background/Yellow.png')
+}
+
 gFrames = {}
 
 gFonts = {
