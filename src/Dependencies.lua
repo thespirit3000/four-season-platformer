@@ -78,13 +78,13 @@ gTextures = {
 }
 
 gBackgroundTextures = {
-    ['blue'] = love.graphics.newImage('assets/graphics/Background/Blue.png'),
-    ['brown'] = love.graphics.newImage('assets/graphics/Background/Brown.png'),
-    ['gray'] = love.graphics.newImage('assets/graphics/Background/Gray.png'),
-    ['green'] = love.graphics.newImage('assets/graphics/Background/Green.png'),
-    ['pink'] = love.graphics.newImage('assets/graphics/Background/Pink.png'),
-    ['purple'] = love.graphics.newImage('assets/graphics/Background/Purple.png'),
-    ['yellow'] = love.graphics.newImage('assets/graphics/Background/Yellow.png')
+    [1] = love.graphics.newImage('assets/graphics/Background/Blue.png'),
+    [2] = love.graphics.newImage('assets/graphics/Background/Brown.png'),
+    [3] = love.graphics.newImage('assets/graphics/Background/Gray.png'),
+    [4] = love.graphics.newImage('assets/graphics/Background/Green.png'),
+    [5] = love.graphics.newImage('assets/graphics/Background/Pink.png'),
+    [6] = love.graphics.newImage('assets/graphics/Background/Purple.png'),
+    [7] = love.graphics.newImage('assets/graphics/Background/Yellow.png')
 }
 
 gFrames = {}

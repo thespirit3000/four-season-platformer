@@ -9,7 +9,6 @@ function love.load()
     love.keyboard.keysPressed = {}
     gStateStack = StateStack()
     gStateStack:push(StartState())
-    gStateMachine:change('main-menu', {map = '0'})
 end
 
 function love.update(dt)
