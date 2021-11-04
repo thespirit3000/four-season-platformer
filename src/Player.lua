@@ -11,6 +11,7 @@ function Player:init(world, x, y)
     self.moving = false
     self.hitting = false
     self.apearing = true
+    self.state = 'spawn'
     self.direction = 1
     self.collider = world:newRectangleCollider(self.x, self.y, self.width,
                                                self.width,
@@ -24,8 +25,6 @@ function Player:init(world, x, y)
             local platformX, platformY = b:getPosition()
             if py < platformY then contact:setEnabled(false) end
         end
-        if a.collision_class == "Player" and b.collision_class == 'Items' then end
-
         contact:setEnabled(false)
     end)
 end
@@ -36,56 +35,59 @@ function Player:update(dt)
             self.state = 'idle'
             self.apearing = false
         end
-    end
-    local px, py = self.collider:getPosition()
-    self.moving = false
-
-    local colliders = self.world:queryRectangleArea(px - 16, py + 16, 32, 2,
-                                                    {'Platform', 'Bound'})
-
-    if #colliders > 0 then
-        self.grounded = true
     else
-        self.grounded = false
-    end
-    if love.keyboard.isDown('right', 'd') then
-        self.collider:setX(px + self.playerSpeed * dt)
-        self.direction = 1
-        self.moving = true
-    elseif love.keyboard.isDown('left', 'a') then
-        self.moving = true
-        self.collider:setX(px - self.playerSpeed * dt)
-        self.direction = -1
-    else
-    end
-    if love.keyboard.wasPressed('space') then
-        if self.grounded then self.collider:applyLinearImpulse(0, -1000) end
-    end
-    if self.grounded then
-        if self.moving then
-            self.state = 'run'
+        local px, py = self.collider:getPosition()
+        self.moving = false
+
+        local colliders = self.world:queryRectangleArea(px - 16, py + 16, 32, 2,
+                                                        {'Platform', 'Bound'})
+
+        if #colliders > 0 then
+            self.grounded = true
+        else
+            self.grounded = false
+        end
+        if love.keyboard.isDown('right', 'd') then
+            self.collider:setX(px + self.playerSpeed * dt)
+            self.direction = 1
+            self.moving = true
+        elseif love.keyboard.isDown('left', 'a') then
+            self.moving = true
+            self.collider:setX(px - self.playerSpeed * dt)
+            self.direction = -1
+        else
+        end
+        if love.keyboard.wasPressed('space') then
+            if self.grounded then
+                self.collider:applyLinearImpulse(0, -1000)
+            end
+        end
+        if self.grounded then
+            if self.moving then
+                self.state = 'run'
+            else
+                if self.apearing then
+                    self.state = 'spawn'
+                else
+                    self.state = 'idle'
+                end
+            end
         else
             if self.apearing then
                 self.state = 'spawn'
             else
-                self.state = 'idle'
+                self.state = 'jump'
             end
         end
-    else
-        if self.apearing then
-            self.state = 'spawn'
-        else
-            self.state = 'jump'
+        if self.collider:enter('Items') then
+            local collision_data = self.collider:getEnterCollisionData('Items')
+            local fruit = collision_data.collider:getObject()
+            fruit:kill()
         end
+
+        if self.collider:enter('Danger') then self:destroy() end
     end
     self.playerGraphics:update(dt, self.state)
-    if self.collider:enter('Items') then
-        local collision_data = self.collider:getEnterCollisionData('Items')
-        local fruit = collision_data.collider:getObject()
-        fruit:kill()
-    end
-
-    if self.collider:enter('Danger') then self:destroy() end
 end
 function Player:render()
     local px, py = self.collider:getPosition()
