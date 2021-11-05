@@ -39,6 +39,12 @@ function Level:createMap()
             self:spawnPlatform(obj.x, obj.y, obj.width, obj.height)
         end
     end
+    if self.map.layers['Items'] then
+        for i, obj in pairs(self.map.layers['Items'].objects) do
+            local item = Fruit(self.world, obj.x, obj.y, obj.properties['type'])
+            table.insert(self.items, item)
+        end
+    end
 end
 
 function Level:spawnPlatform(x, y, width, height)
