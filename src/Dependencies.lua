@@ -5,6 +5,8 @@ anim8 = require 'lib.anim8'
 wf = require 'lib.windfield'
 camera = require 'lib.hump.camera'
 Timer = require 'lib.knife.timer'
+Helium = require("lib.helium")
+Flux = require("lib.flux")
 
 require "src.Util"
 
@@ -16,6 +18,7 @@ require "src.states.StartState"
 require "src.states.HightScoresState"
 require "src.states.ServeState"
 require "src.states.GameOverSate"
+require("src.states.MainMenuState")
 
 require "src.Player"
 require 'src.EnemyBase'
@@ -33,6 +36,8 @@ require("src.Enemies.BeeAnimation")
 require("src.Enemies.ChameleonEnemy")
 require("src.Enemies.ChameleonAnimation")
 
+require("src.UI.menuBtn")
+
 WINDOW_WIDTH = 1280
 WINDOW_HEIGHT = 720
 VIRTUAL_HEIGHT = 512
@@ -43,6 +48,7 @@ BACKGROUND_WIDTH = 2 * VIRTUAL_WIDTH / SkyTileSize
 
 gStateMachine = StateMachine {
     ["start"] = function() return StartState() end,
+    ["main-menu"] = function() return MainMenuState() end,
     ["play"] = function() return PlayState() end,
     ["hight-scores"] = function() return HightScoresState() end,
     ["serve"] = function() return ServeState() end,
@@ -71,12 +77,26 @@ gTextures = {
         'assets/graphics/Items/Fruits/Collected.png')
 }
 
+gBackgroundTextures = {
+    [1] = love.graphics.newImage('assets/graphics/Background/Blue.png'),
+    [2] = love.graphics.newImage('assets/graphics/Background/Brown.png'),
+    [3] = love.graphics.newImage('assets/graphics/Background/Gray.png'),
+    [4] = love.graphics.newImage('assets/graphics/Background/Green.png'),
+    [5] = love.graphics.newImage('assets/graphics/Background/Pink.png'),
+    [6] = love.graphics.newImage('assets/graphics/Background/Purple.png'),
+    [7] = love.graphics.newImage('assets/graphics/Background/Yellow.png')
+}
+
 gFrames = {}
 
 gFonts = {
     ["small"] = love.graphics.newFont("assets/fonts/font.ttf", 8),
     ["medium"] = love.graphics.newFont("assets/fonts/font.ttf", 16),
-    ["large"] = love.graphics.newFont("assets/fonts/font.ttf", 32)
+    ["large"] = love.graphics.newFont("assets/fonts/font.ttf", 32),
+    ['main-menu-font'] = love.graphics.newFont('assets/fonts/Roboto-Bold.ttf',
+                                               32),
+    ['main-menu-button-font'] = love.graphics.newFont(
+        'assets/fonts/Roboto-Bold.ttf', 16)
 }
 
 gMaps = {["testing"] = sti('maps/level0.lua')}

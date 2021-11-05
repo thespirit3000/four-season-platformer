@@ -1,18 +1,17 @@
 PlayState = Class {__includes = BaseState}
 
-function PlayState:enter(params)
+function PlayState:enter(params) end
+
+function PlayState:init(params)
     self.level = params.map
     self.platforms = {}
     self.items = {}
     self.enemies = {}
     self.world = wf.newWorld(0, 1000, false)
-    print(self.level)
     self:loadMap('maps/level' .. self.level .. '.lua')
     self.player = Player(self.world, self.playerX, self.playerY)
     self.world:setQueryDebugDrawing(true)
 end
-
-function PlayState:init() end
 
 function PlayState:update(dt)
     self.map:update(dt)
@@ -33,7 +32,7 @@ end
 
 function PlayState:render()
     self.map:draw()
-    --[[     self.world:draw(200) ]]
+    self.world:draw(200)
     for i, value in ipairs(self.items) do value:render() end
     for i, value in ipairs(self.enemies) do value:render() end
     self.player:render()

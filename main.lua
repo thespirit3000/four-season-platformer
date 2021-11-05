@@ -7,19 +7,19 @@ function love.load()
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT,
                      {fullscreen = true, resizable = true, vsync = true})
     love.keyboard.keysPressed = {}
-    gStateMachine:change('play', {map = '0'})
+    gStateStack = StateStack()
+    gStateStack:push(StartState())
 end
 
 function love.update(dt)
-
     Timer.update(dt)
-    gStateMachine:update(dt)
+    gStateStack:update(dt)
     love.keyboard.keysPressed = {}
 end
 
 function love.draw()
     push:start()
-    gStateMachine:render()
+    gStateStack:render()
     displayFPS()
     push:finish()
 end

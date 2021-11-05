@@ -1,27 +1,32 @@
 StartState = Class {__includes = BaseState}
 
+local backgroundScroll = 0
+local BACKGROUND_SCROLL_SPEED = 30
+local BACKGROUND_LOOPING_POINT = 512 * 2
+
 function StartState:init()
     self.scrollX = 0
     self.scrollSpeed = 16
     self.menuItem = 1
-    self.season = math.random(1, 4)
-    self.tiles = GenerateTiledBacground(SkyTileSize, self.season)
-    gSounds['music']:play()
+    self.texture = math.random(1, 7)
 end
 
 function StartState:update(dt)
+    backgroundScroll = (backgroundScroll + BACKGROUND_SCROLL_SPEED * dt) %
+                           BACKGROUND_LOOPING_POINT
     if love.keyboard.wasPressed("enter") or love.keyboard.wasPressed("return") then
-        gStateMachine:change('play')
+        gStateStack:pop()
+        gStateStack:push(PlayState({map = 0}))
     end
 end
 
 function StartState:render()
     love.graphics.setColor(1, 1, 1, 255)
-    for y = 1, BACKGROUND_HEIGHT do
-        for x = 1, BACKGROUND_WIDTH do
-            love.graphics.draw(gTextures['sky'],
-                               gFrames['skies'][self.tiles[y][x].id],
-                               (x - 1) * SkyTileSize, (y - 1) * SkyTileSize)
+    local dx, dy = gBackgroundTextures[self.texture]:getDimensions()
+    for y = -VIRTUAL_HEIGHT, VIRTUAL_HEIGHT / dy do
+        for x = 0, VIRTUAL_WIDTH / dx do
+            love.graphics.draw(gBackgroundTextures[self.texture], x * dx,
+                               y * dy + backgroundScroll)
         end
     end
     love.graphics.setFont(gFonts['small'])
