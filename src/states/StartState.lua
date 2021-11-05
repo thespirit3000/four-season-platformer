@@ -29,7 +29,8 @@ function StartState:render()
                                y * dy + backgroundScroll)
         end
     end
-    love.graphics.setFont(gFonts['small'])
-    love.graphics.printf('to start game press enter', 0, VIRTUAL_HEIGHT - 16,
+    love.graphics.setFont(gFonts['main-menu-button-font'])
+    love.graphics.printf('to start game press enter', 0, VIRTUAL_HEIGHT - 32,
+
                          VIRTUAL_WIDTH, 'center')
 end
