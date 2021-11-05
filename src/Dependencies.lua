@@ -20,6 +20,8 @@ require "src.states.ServeState"
 require "src.states.GameOverSate"
 require("src.states.MainMenuState")
 
+require("src.world.Level")
+
 require "src.Player"
 require 'src.EnemyBase'
 require 'src.PlayerAnimation'
@@ -98,8 +100,6 @@ gFonts = {
     ['main-menu-button-font'] = love.graphics.newFont(
         'assets/fonts/Roboto-Bold.ttf', 16)
 }
-
-gMaps = {["testing"] = sti('maps/level0.lua')}
 
 gEnemy = {
     ['mushroom'] = MushroomEnemy,

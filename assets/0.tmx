@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="54" height="32" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="81">
  <editorsettings>
-  <export target="../maps/level0.lua" format="lua"/>
+  <export target="../src/world/maps/level0.lua" format="lua"/>
  </editorsettings>
  <tileset firstgid="1" name="Terrain (16x16)" tilewidth="16" tileheight="16" tilecount="242" columns="22">
   <image source="graphics/Terrain/Terrain (16x16).png" width="352" height="176"/>
@@ -143,7 +143,7 @@
   <object id="21" x="515.833" y="-1.16667" width="348.833" height="15.5"/>
  </objectgroup>
  <objectgroup id="3" name="Platforms" visible="0">
-  <object id="22" x="672" y="223" width="175" height="34"/>
+  <object id="22" x="672" y="223" width="175" height="16"/>
   <object id="23" x="529.5" y="256.5" width="175" height="13.3333"/>
   <object id="66" x="480" y="416" width="206.667" height="14"/>
   <object id="68" x="657.333" y="337.333" width="188.667" height="13.3333"/>
