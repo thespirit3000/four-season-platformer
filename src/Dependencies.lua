@@ -106,3 +106,10 @@ gEnemy = {
     ['angry-pig'] = AngryPigEnemy,
     ['bee'] = BeeEnemy
 }
+
+gPlayersName = {
+    ['ninja-frog'] = 'Ninja Frog',
+    ['mask-dude'] = 'Mask Dude',
+    ['pink-man'] = 'Pink Man',
+    ['virtual-guy'] = 'Vitual Guy'
+}
