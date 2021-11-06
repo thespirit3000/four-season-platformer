@@ -1,71 +1,70 @@
 ENTITY_DEFS = {
     ['player'] = {
-        frameWidth = 32,
-        frameHeight = 32,
-        animationSpeed = 0.05,
         animations = {
-            ['idle'] = {frames = '1-11', interval = 0.15, texture = 'idle'},
-            ['run'] = {frames = '1-11', interval = 0.15, texture = 'run'},
+            ['idle'] = {
+                frames = '1-11',
+                interval = 0.05,
+                texture = 'idle',
+                frameWidth = 32,
+                frameHeight = 32
+            },
+            ['run'] = {
+                frames = '1-11',
+                interval = 0.05,
+                texture = 'run',
+                frameWidth = 32,
+                frameHeight = 32
+            },
             ['double-jump'] = {
                 frames = '1-6',
-                interval = 0.15,
-                texture = 'double-jump'
+                interval = 0.05,
+                texture = 'double-jump',
+                frameWidth = 32,
+                frameHeight = 32
             },
-            ['fall'] = {frames = '1-1', interval = 0.15, texture = 'fall'},
-            ['hit'] = {frames = '1-1', texture = 'hit'},
-            ['jump'] = {frames = '1-1', texture = 'jump'},
-            ['wall-jump'] = {frames = '1-5', texture = 'wall-jump'},
-            ['apear'] = {frames = '1-7', texture = 'apear'},
-            ['disapear'] = {frames = '1-7', texture = 'disapear'}
-        }
-    },
-    ['npc'] = {
-        animations = {
-            ['walk-left'] = {
-                frames = {16, 17, 18, 17},
-                interval = 0.15,
-                texture = 'entities'
+            ['fall'] = {
+                frames = '1-1',
+                interval = 0.05,
+                texture = 'fall',
+                frameWidth = 32,
+                frameHeight = 32
             },
-            ['walk-right'] = {
-                frames = {28, 29, 30, 29},
-                interval = 0.15,
-                texture = 'entities'
+            ['hit'] = {
+                frames = '1-1',
+                interval = 0.05,
+                texture = 'hit',
+                frameWidth = 32,
+                frameHeight = 32
             },
-            ['walk-down'] = {
-                frames = {4, 5, 6, 5},
-                interval = 0.15,
-                texture = 'entities'
+            ['jump'] = {
+                frames = '1-1',
+                interval = 0.05,
+                texture = 'jump',
+                frameWidth = 32,
+                frameHeight = 32
             },
-            ['walk-up'] = {
-                frames = {40, 41, 42, 41},
-                interval = 0.15,
-                texture = 'entities'
+            ['wall-jump'] = {
+                frames = '1-5',
+                interval = 0.05,
+                texture = 'wall-jump',
+                frameWidth = 32,
+                frameHeight = 32
             },
-            ['idle-left'] = {frames = {17}, texture = 'entities'},
-            ['idle-right'] = {frames = {29}, texture = 'entities'},
-            ['idle-down'] = {frames = {5}, texture = 'entities'},
-            ['idle-up'] = {frames = {41}, texture = 'entities'}
+            ['apear'] = {
+                frames = '1-7',
+                interval = 0.05,
+                texture = 'apear',
+                frameWidth = 32,
+                frameHeight = 32
+            },
+            ['disapear'] = {
+                frames = '1-7',
+                interval = 0.05,
+                texture = 'disapear',
+                frameWidth = 32,
+                frameHeight = 32
+            }
         }
     }
 }
 
---[[ self.textures = {
-    ['idle'] = love.graphics.newImage('assets/graphics/MainCharacters/' ..
-                                          playerName .. '/Idle.png'),
-    ['doubleJump'] = love.graphics.newImage(
-        'assets/graphics/MainCharacters/' .. playerName .. '/Double Jump.png'),
-    ['fall'] = love.graphics.newImage('assets/graphics/MainCharacters/' ..
-                                          playerName .. '/Fall.png'),
-    ['hit'] = love.graphics.newImage('assets/graphics/MainCharacters/' ..
-                                         playerName .. '/Hit.png'),
-    ['jump'] = love.graphics.newImage('assets/graphics/MainCharacters/' ..
-                                          playerName .. '/Jump.png'),
-    ['run'] = love.graphics.newImage('assets/graphics/MainCharacters/' ..
-                                         playerName .. '/Run.png'),
-    ['wallJump'] = love.graphics.newImage(
-        'assets/graphics/MainCharacters/' .. playerName .. '/Wall Jump.png'),
-    ['spawn'] = love.graphics.newImage(
-        '/assets/graphics/MainCharacters/Appearing.png'),
-    ['disapear'] = love.graphics.newImage(
-        '/assets/graphics/MainCharacters/Appearing.png')
-} ]]
