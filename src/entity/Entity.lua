@@ -7,7 +7,10 @@ function Entity:init(def)
     self.animations = self:createAnimations(def.animations)
     self.dead = false
 end
-function Entity:update(dt) end
+function Entity:update(dt)
+    self.stateMachine:update(dt)
+    if self.currentAnimation then self.currentAnimation:update(dt) end
+end
 function Entity:render() end
 function Entity:changeState(name) self.stateMachine:change(name) end
 
