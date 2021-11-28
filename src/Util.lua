@@ -49,3 +49,27 @@ function GenerateTiledBacground(tileSize, season)
     end
     return tiles
 end
+
+function GetPlayerTextures(playerName)
+    return {
+        ['idle'] = love.graphics.newImage(
+            'assets/graphics/MainCharacters/' .. playerName .. '/Idle.png'),
+        ['doubleJump'] = love.graphics.newImage(
+            'assets/graphics/MainCharacters/' .. playerName ..
+                '/Double Jump.png'),
+        ['fall'] = love.graphics.newImage(
+            'assets/graphics/MainCharacters/' .. playerName .. '/Fall.png'),
+        ['hit'] = love.graphics.newImage(
+            'assets/graphics/MainCharacters/' .. playerName .. '/Hit.png'),
+        ['jump'] = love.graphics.newImage(
+            'assets/graphics/MainCharacters/' .. playerName .. '/Jump.png'),
+        ['run'] = love.graphics.newImage(
+            'assets/graphics/MainCharacters/' .. playerName .. '/Run.png'),
+        ['wallJump'] = love.graphics.newImage(
+            'assets/graphics/MainCharacters/' .. playerName .. '/Wall Jump.png'),
+        ['spawn'] = love.graphics.newImage(
+            '/assets/graphics/MainCharacters/Appearing.png'),
+        ['disapear'] = love.graphics.newImage(
+            '/assets/graphics/MainCharacters/Appearing.png')
+    }
+end
